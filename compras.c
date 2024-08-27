@@ -7,6 +7,7 @@ typedef struct lista{
     struct lista *seg;
 }celula;
 
+/*inserção na lista*/
 void insere(char c[21], celula *p){
     celula *novo, *aux;
     novo = (celula*)malloc(sizeof(celula));
@@ -20,6 +21,7 @@ void insere(char c[21], celula *p){
     aux->seg = novo;
 }
 
+/*a função percorre a lista e compara c com cada item, caso seja igual retorna 0, ao contrário retorna 1*/
 int compara(char c[21], celula *lista){
     celula *aux = lista->seg;
     while(aux!=NULL){
@@ -31,6 +33,7 @@ int compara(char c[21], celula *lista){
     return 1;
 }
 
+/*função de impressão da lista*/
 void imprime(celula *lista){
     celula *a;
     for(a=lista->seg; a->seg!=NULL; a=a->seg){
@@ -48,6 +51,8 @@ int main(){
 
     scanf("%d", &n);
     getchar();
+
+    /*o laço recebe a string e a divide em palavras separadas por espaço, e insere na lista apenas os não repetidos, ou seja, quando compara=1*/
     for(i=0; i<n;i++){
         fgets(compras, sizeof(compras), stdin);
         palavra=strtok(compras, " \n");
